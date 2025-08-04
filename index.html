@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcours d'Apprentissage Marketing et Growth Hacking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Slate & Amber -->
+    <!-- Application Structure Plan: A linear, four-phase roadmap structure visually represents the sequential learning path from the source document. The user flow is: 1) Introduction, 2) Interactive Roadmap where clicking a phase reveals details, 3) A comparative chart, and 4) A summary of cumulative skills. This structure guides the user through the logical progression while allowing dynamic, on-demand exploration of course specifics, preventing information overload. -->
+    <!-- Visualization & Content Choices: Report Info: Four core courses with different focuses and durations. Goal: Compare courses and show progression. Viz/Method: An interactive roadmap with HTML/CSS Flexbox for sequencing. A radar chart (Chart.js) to compare the core courses across dimensions (Stratégie, Exécution Numérique, Compétences Techniques, Durée). Interaction: Clicking a phase card dynamically updates a detail pane with course information. Justification: This combination reinforces the sequential nature of the recommendation while providing detailed, on-demand information and a powerful comparative overview, enhancing user understanding. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 450px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .phase-card {
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        .phase-card.active {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            border-color: #f59e0b; /* amber-500 */
+        }
+        .details-section {
+            transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .details-section.visible {
+            max-height: 2000px; /* Large enough to not clip content */
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+<main class="container mx-auto px-4 py-8 md:py-12">
+
+    <header class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Votre Parcours d'Apprentissage Marketing Final</h1>
+        <p class="text-lg text-slate-600 max-w-3xl mx-auto">Une feuille de route interactive en 4 phases, conçue pour vous guider de la stratégie à l'analyse de données avancée.</p>
+    </header>
+
+    <section id="roadmap" class="mb-16">
+        <h2 class="text-3xl font-bold text-center mb-4 text-slate-900">Le Parcours d'Apprentissage Recommandé</h2>
+        <p class="text-center text-slate-600 mb-10 max-w-3xl mx-auto">Suivez cette progression logique pour construire une expertise complète et cohérente. Cliquez sur chaque phase pour découvrir le cours recommandé et sa justification.</p>
+
+        <div id="phases-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        </div>
+    </section>
+
+    <section id="details-section" class="details-section bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-slate-200">
+    </section>
+
+    <section id="comparison" class="my-16">
+        <h2 class="text-3xl font-bold text-center mb-4 text-slate-900">Analyse Comparative des Cours</h2>
+        <p class="text-center text-slate-600 mb-10 max-w-2xl mx-auto">Ce graphique radar visualise le focus relatif de chaque programme sur les axes stratégique, numérique et technique, ainsi que leur durée. C'est une excellente façon de voir la progression de la difficulté.</p>
+        <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-200">
+            <div class="chart-container">
+                <canvas id="comparisonChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section id="cumulative-skills" class="my-16">
+        <h2 class="text-3xl font-bold text-center mb-4 text-slate-900">Compétences Cumulatives Acquises</h2>
+        <p class="text-center text-slate-600 mb-10 max-w-2xl mx-auto">Une fois le parcours terminé, vous aurez développé un profil de marketeur complet, alliant stratégie, exécution et analyse.</p>
+        <div id="skills-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
+                <h3 class="font-bold text-lg mb-2 text-slate-900">Acuité Stratégique</h3>
+                <p class="text-slate-600">Compréhension des concepts fondamentaux, du comportement des consommateurs et de la planification stratégique.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
+                <h3 class="font-bold text-lg mb-2 text-slate-900">Maîtrise du Marketing Numérique</h3>
+                <p class="text-slate-600">Capacité à gérer des campagnes sur les canaux numériques avec une approche moderne de growth hacking.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
+                <h3 class="font-bold text-lg mb-2 text-slate-900">Analyse de Performance</h3>
+                <p class="text-slate-600">Expertise dans la mesure des performances et la conversion des données en insights exploitables.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
+                <h3 class="font-bold text-lg mb-2 text-slate-900">Compétences Techniques Avancées</h3>
+                <p class="text-slate-600">Maîtrise des outils d'analyse de données de pointe comme SQL, Python et Tableau.</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="bg-slate-800 text-slate-300 py-6 text-center">
+    <p>&copy; 2025 Parcours d'Apprentissage Marketing et Growth Hacking. Construit pour la clarté.</p>
+</footer>
+
+<script>
+    const courseData = [
+        {
+            id: 'strategy',
+            phase: 1,
+            title: 'Stratégie Marketing Fondamentale',
+            courseName: 'Marketing Strategy Specialization',
+            provider: 'IE Business School',
+            duration: '2 mois (10h/sem)',
+            difficulty: 'Débutant',
+            justification: "Cette spécialisation est le point de départ idéal. Elle établit les bases conceptuelles indispensables pour comprendre le \"pourquoi\" derrière chaque action marketing. Avant de se lancer dans les outils numériques, il est crucial de maîtriser les principes de l'analyse de marché, du comportement des consommateurs et de l'élaboration d'un plan marketing.",
+            skills: ['Planification Marketing', 'Stratégie de Marque', 'Comportement du consommateur', 'Les 4 P'],
+            tools: ['Conceptuel'],
+            chartData: { strategy: 9, digital: 2, technical: 1, duration: 3 }
+        },
+        {
+            id: 'ibm',
+            phase: 2,
+            title: 'Exécution Numérique et Growth Hacking',
+            courseName: 'IBM Digital Marketing and Growth Hacking',
+            provider: 'IBM',
+            duration: '2 mois (5-8h/sem)',
+            difficulty: 'Débutant',
+            justification: "Le certificat IBM s'intègre parfaitement en deuxième position, faisant le pont entre la théorie et la pratique. Il couvre un large éventail de canaux numériques avec un accent moderne sur le growth hacking et l'IA générative. Ce cours vous apprend à \"faire\" du marketing numérique et à adopter un état d'esprit orienté vers la croissance rapide et l'expérimentation.",
+            skills: ['IA Générative', 'Growth Hacking', 'SEO', 'Publicité', 'Médias Sociaux', 'E-commerce'],
+            tools: ['Outils GenAI', 'Plateformes publicitaires', 'Outils SEO'],
+            chartData: { strategy: 5, digital: 9, technical: 2, duration: 3 }
+        },
+        {
+            id: 'unilever',
+            phase: 3,
+            title: 'Analyse de Performance et Optimisation',
+            courseName: 'Unilever Digital Marketing Analyst',
+            provider: 'Unilever',
+            duration: '2 mois (10h/sem)',
+            difficulty: 'Débutant',
+            justification: "Après avoir appris à exécuter des campagnes dans la Phase 2, l'étape logique suivante est de comprendre comment les mesurer et les optimiser. Ce certificat met l'accent sur les compétences pratiques d'analyse de performance, en vous enseignant à utiliser des outils standards de l'industrie comme Google Analytics 4. C'est le tremplin parfait pour passer de l'exécution à l'analyse, sans l'exigence technique de la programmation.",
+            skills: ['Analyse du Marketing Numérique', 'Google Analytics 4', 'Tests A/B', 'Narration de Données', 'ROI'],
+            tools: ['Google Analytics 4', 'Feuilles de calcul'],
+            chartData: { strategy: 6, digital: 7, technical: 4, duration: 3 }
+        },
+        {
+            id: 'meta',
+            phase: 4,
+            title: 'Maîtrise Technique et Analyse Avancée',
+            courseName: 'Meta Marketing Analytics',
+            provider: 'Meta',
+            duration: '7 mois (10h/sem)',
+            difficulty: 'Débutant (Technique)',
+            justification: "Cette phase est le point culminant pour ceux qui aspirent à des rôles d'analyste marketing avancés. Elle représente un saut significatif en profondeur technique, introduisant la manipulation de données avec SQL et Python, et la visualisation avec Tableau. Elle fournit la rigueur statistique nécessaire pour passer de la simple analyse de métriques à la découverte de véritables insights.",
+            skills: ['SQL', 'Python', 'Tableau', 'Analyse Statistique', 'Modélisation'],
+            tools: ['SQL', 'Python (Pandas)', 'Tableau', 'Meta Ads Manager'],
+            chartData: { strategy: 3, digital: 6, technical: 9, duration: 8 }
+        }
+    ];
+
+    const phasesContainer = document.getElementById('phases-container');
+    const detailsSection = document.getElementById('details-section');
+
+    function renderPhaseCards() {
+        phasesContainer.innerHTML = '';
+        courseData.forEach(course => {
+            const card = document.createElement('div');
+            card.className = 'phase-card bg-white p-6 rounded-2xl shadow-md border-2 border-transparent hover:shadow-xl hover:border-amber-400';
+            card.dataset.courseId = course.id;
+            card.innerHTML = `
+                    <div class="flex items-center mb-4">
+                        <span class="bg-slate-800 text-white text-2xl font-bold rounded-full flex items-center justify-center h-12 w-12 mr-4">${course.phase}</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900">${course.title}</h3>
+                            <p class="text-sm text-slate-500">${course.courseName}</p>
+                        </div>
+                    </div>
+                `;
+            phasesContainer.appendChild(card);
+        });
+    }
+
+    function updateDetails(courseId) {
+        const course = courseData.find(c => c.id === courseId);
+        if (!course) return;
+
+        detailsSection.innerHTML = `
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-2">
+                        <p class="text-sm font-semibold text-amber-600 mb-1">Phase ${course.phase}</p>
+                        <h3 class="text-3xl font-bold text-slate-900 mb-2">${course.title}</h3>
+                        <p class="text-lg text-slate-600 mb-6">${course.courseName} par ${course.provider}</p>
+                        <p class="text-slate-700 leading-relaxed mb-6">${course.justification}</p>
+                    </div>
+                    <div>
+                        <div class="bg-slate-100 p-4 rounded-lg mb-4">
+                            <h4 class="font-bold text-slate-800 mb-2">Infos Clés</h4>
+                            <p><span class="font-semibold">Durée :</span> ${course.duration}</p>
+                            <p><span class="font-semibold">Difficulté :</span> ${course.difficulty}</p>
+                        </div>
+                        <div class="bg-slate-100 p-4 rounded-lg">
+                            <h4 class="font-bold text-slate-800 mb-3">Compétences & Outils</h4>
+                            <h5 class="font-semibold text-sm mb-2 text-slate-600">Compétences</h5>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                ${course.skills.map(skill => `<span class="bg-amber-100 text-amber-800 text-xs font-medium px-2.5 py-0.5 rounded-full">${skill}</span>`).join('')}
+                            </div>
+                            <h5 class="font-semibold text-sm mb-2 text-slate-600">Outils</h5>
+                            <div class="flex flex-wrap gap-2">
+                                ${course.tools.map(tool => `<span class="bg-slate-200 text-slate-800 text-xs font-medium px-2.5 py-0.5 rounded-full">${tool}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        detailsSection.classList.add('visible');
+    }
+
+    phasesContainer.addEventListener('click', (e) => {
+        const card = e.target.closest('.phase-card');
+        if (card) {
+            const courseId = card.dataset.courseId;
+            document.querySelectorAll('.phase-card').forEach(c => c.classList.remove('active'));
+            card.classList.add('active');
+            updateDetails(courseId);
+        }
+    });
+
+    function renderComparisonChart() {
+        const ctx = document.getElementById('comparisonChart').getContext('2d');
+        const labels = ['Stratégie Conceptuelle', 'Exécution Numérique', 'Compétences Techniques', 'Durée (Mois)'];
+        const datasets = courseData.map((course, index) => {
+            const colors = [
+                { bg: 'rgba(245, 158, 11, 0.2)', border: 'rgb(245, 158, 11)' }, // amber-500
+                { bg: 'rgba(59, 130, 246, 0.2)', border: 'rgb(59, 130, 246)' }, // blue-500
+                { bg: 'rgba(30, 41, 59, 0.2)', border: 'rgb(30, 41, 59)' },    // slate-800
+                { bg: 'rgba(100, 116, 139, 0.2)', border: 'rgb(100, 116, 139)' } // slate-500
+            ];
+            return {
+                label: course.courseName,
+                data: [course.chartData.strategy, course.chartData.digital, course.chartData.technical, course.chartData.duration],
+                backgroundColor: colors[index].bg,
+                borderColor: colors[index].border,
+                pointBackgroundColor: colors[index].border,
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: colors[index].border,
+                borderWidth: 2
+            };
+        });
+
+        new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: labels,
+                datasets: datasets
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: {
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        },
+                        pointLabels: {
+                            font: {
+                                size: 12,
+                                weight: '500'
+                            },
+                            color: '#475569' // slate-600
+                        },
+                        ticks: {
+                            backdropColor: 'rgba(255, 255, 255, 0.75)',
+                            color: '#64748b', // slate-500
+                            stepSize: 2
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 10
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            font: {
+                                size: 14
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.r !== null) {
+                                    label += context.parsed.r;
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    window.onload = function() {
+        renderPhaseCards();
+        renderComparisonChart();
+        const firstCard = document.querySelector('.phase-card');
+        if(firstCard) {
+            firstCard.classList.add('active');
+            updateDetails(firstCard.dataset.courseId);
+        }
+    };
+</script>
+</body>
+</html>
