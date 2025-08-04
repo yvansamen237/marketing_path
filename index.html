@@ -9,10 +9,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Slate & Amber -->
-    <!-- Application Structure Plan: A linear, four-phase roadmap structure visually represents the sequential learning path from the source document. The user flow is: 1) Introduction, 2) Interactive Roadmap where clicking a phase reveals details, 3) A comparative chart, and 4) A summary of cumulative skills. This structure guides the user through the logical progression while allowing dynamic, on-demand exploration of course specifics, preventing information overload. -->
-    <!-- Visualization & Content Choices: Report Info: Four core courses with different focuses and durations. Goal: Compare courses and show progression. Viz/Method: An interactive roadmap with HTML/CSS Flexbox for sequencing. A radar chart (Chart.js) to compare the core courses across dimensions (Stratégie, Exécution Numérique, Compétences Techniques, Durée). Interaction: Clicking a phase card dynamically updates a detail pane with course information. Justification: This combination reinforces the sequential nature of the recommendation while providing detailed, on-demand information and a powerful comparative overview, enhancing user understanding. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -49,6 +45,12 @@
         .details-section.visible {
             max-height: 2000px; /* Large enough to not clip content */
             opacity: 1;
+        }
+        .cta-button {
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .cta-button:hover {
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -105,6 +107,38 @@
         </div>
     </section>
 
+    <!-- Nouvelle section pour les métiers accessibles -->
+    <section id="accessible-jobs" class="my-16">
+        <h2 class="text-3xl font-bold text-center mb-4 text-slate-900">Métiers Accessibles après ce Parcours</h2>
+        <p class="text-center text-slate-600 mb-10 max-w-3xl mx-auto">Ce parcours vous prépare à des rôles clés dans le domaine du marketing numérique, du growth hacking et de l'analyse de données.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
+                <h3 class="font-bold text-xl mb-2 text-slate-900">Spécialiste Marketing Numérique</h3>
+                <p class="text-slate-600">Gère et optimise les campagnes sur les plateformes numériques (réseaux sociaux, email, SEO) pour générer des leads et des ventes.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
+                <h3 class="font-bold text-xl mb-2 text-slate-900">Growth Hacker</h3>
+                <p class="text-slate-600">Conçoit et met en œuvre des expériences rapides pour identifier les canaux et les tactiques les plus efficaces pour la croissance d'une entreprise.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
+                <h3 class="font-bold text-xl mb-2 text-slate-900">Analyste Marketing</h3>
+                <p class="text-slate-600">Collecte et analyse les données de performance pour identifier des tendances, mesurer le ROI et fournir des recommandations stratégiques.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
+                <h3 class="font-bold text-xl mb-2 text-slate-900">Consultant en Marketing</h3>
+                <p class="text-slate-600">Conseille des entreprises sur leur stratégie marketing globale, de la planification à l'exécution, en s'appuyant sur une connaissance approfondie du marché.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
+                <h3 class="font-bold text-xl mb-2 text-slate-900">Responsable E-commerce</h3>
+                <p class="text-slate-600">Dirige les opérations d'une boutique en ligne, en se concentrant sur l'acquisition de clients, la rétention et l'optimisation de la conversion.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
+                <h3 class="font-bold text-xl mb-2 text-slate-900">Responsable SEO/SEA</h3>
+                <p class="text-slate-600">Spécialiste de l'optimisation pour les moteurs de recherche et des campagnes publicitaires payantes pour maximiser la visibilité en ligne.</p>
+            </div>
+        </div>
+    </section>
+
 </main>
 
 <footer class="bg-slate-800 text-slate-300 py-6 text-center">
@@ -121,10 +155,11 @@
             provider: 'IE Business School',
             duration: '2 mois (10h/sem)',
             difficulty: 'Débutant',
-            justification: "Cette spécialisation est le point de départ idéal. Elle établit les bases conceptuelles indispensables pour comprendre le \"pourquoi\" derrière chaque action marketing. Avant de se lancer dans les outils numériques, il est crucial de maîtriser les principes de l'analyse de marché, du comportement des consommateurs et de l'élaboration d'un plan marketing.",
+            justification: "Cette spécialisation est le point de départ idéal. Elle établit les bases conceptuelles indispensables pour comprendre le **\"pourquoi\"** derrière chaque action marketing. Avant de se lancer dans les outils numériques, il est crucial de maîtriser les principes de l'analyse de marché, du comportement des consommateurs et de l'élaboration d'un plan marketing.",
             skills: ['Planification Marketing', 'Stratégie de Marque', 'Comportement du consommateur', 'Les 4 P'],
             tools: ['Conceptuel'],
-            chartData: { strategy: 9, digital: 2, technical: 1, duration: 3 }
+            chartData: { strategy: 9, digital: 2, technical: 1, duration: 3 },
+            courseUrl: 'https://www.coursera.org/specializations/marketing-strategy'
         },
         {
             id: 'ibm',
@@ -134,10 +169,11 @@
             provider: 'IBM',
             duration: '2 mois (5-8h/sem)',
             difficulty: 'Débutant',
-            justification: "Le certificat IBM s'intègre parfaitement en deuxième position, faisant le pont entre la théorie et la pratique. Il couvre un large éventail de canaux numériques avec un accent moderne sur le growth hacking et l'IA générative. Ce cours vous apprend à \"faire\" du marketing numérique et à adopter un état d'esprit orienté vers la croissance rapide et l'expérimentation.",
+            justification: "Le certificat IBM s'intègre parfaitement en deuxième position, faisant le pont entre la théorie et la pratique. Il couvre un large éventail de canaux numériques avec un accent moderne sur le **growth hacking** et l'**IA générative**. Ce cours vous apprend à **\"faire\"** du marketing numérique et à adopter un état d'esprit orienté vers la croissance rapide et l'expérimentation.",
             skills: ['IA Générative', 'Growth Hacking', 'SEO', 'Publicité', 'Médias Sociaux', 'E-commerce'],
             tools: ['Outils GenAI', 'Plateformes publicitaires', 'Outils SEO'],
-            chartData: { strategy: 5, digital: 9, technical: 2, duration: 3 }
+            chartData: { strategy: 5, digital: 9, technical: 2, duration: 3 },
+            courseUrl: 'https://www.coursera.org/professional-certificates/ibm-digital-marketing-and-growth-hacking'
         },
         {
             id: 'unilever',
@@ -147,10 +183,11 @@
             provider: 'Unilever',
             duration: '2 mois (10h/sem)',
             difficulty: 'Débutant',
-            justification: "Après avoir appris à exécuter des campagnes dans la Phase 2, l'étape logique suivante est de comprendre comment les mesurer et les optimiser. Ce certificat met l'accent sur les compétences pratiques d'analyse de performance, en vous enseignant à utiliser des outils standards de l'industrie comme Google Analytics 4. C'est le tremplin parfait pour passer de l'exécution à l'analyse, sans l'exigence technique de la programmation.",
+            justification: "Après avoir appris à exécuter des campagnes dans la Phase 2, l'étape logique suivante est de comprendre comment les mesurer et les optimiser. Ce certificat met l'accent sur les compétences pratiques d'analyse de performance, en vous enseignant à utiliser des outils standards de l'industrie comme **Google Analytics 4**. C'est le tremplin parfait pour passer de l'exécution à l'analyse, sans l'exigence technique de la programmation.",
             skills: ['Analyse du Marketing Numérique', 'Google Analytics 4', 'Tests A/B', 'Narration de Données', 'ROI'],
             tools: ['Google Analytics 4', 'Feuilles de calcul'],
-            chartData: { strategy: 6, digital: 7, technical: 4, duration: 3 }
+            chartData: { strategy: 6, digital: 7, technical: 4, duration: 3 },
+            courseUrl: 'https://www.coursera.org/professional-certificates/unilever-digital-marketing-analyst'
         },
         {
             id: 'meta',
@@ -160,10 +197,11 @@
             provider: 'Meta',
             duration: '7 mois (10h/sem)',
             difficulty: 'Débutant (Technique)',
-            justification: "Cette phase est le point culminant pour ceux qui aspirent à des rôles d'analyste marketing avancés. Elle représente un saut significatif en profondeur technique, introduisant la manipulation de données avec SQL et Python, et la visualisation avec Tableau. Elle fournit la rigueur statistique nécessaire pour passer de la simple analyse de métriques à la découverte de véritables insights.",
+            justification: "Cette phase est le point culminant pour ceux qui aspirent à des rôles d'analyste marketing avancés. Elle représente un saut significatif en profondeur technique, introduisant la manipulation de données avec **SQL** et **Python**, et la visualisation avec **Tableau**. Elle fournit la rigueur statistique nécessaire pour passer de la simple analyse de métriques à la découverte de véritables insights.",
             skills: ['SQL', 'Python', 'Tableau', 'Analyse Statistique', 'Modélisation'],
             tools: ['SQL', 'Python (Pandas)', 'Tableau', 'Meta Ads Manager'],
-            chartData: { strategy: 3, digital: 6, technical: 9, duration: 8 }
+            chartData: { strategy: 3, digital: 6, technical: 9, duration: 8 },
+            courseUrl: 'https://www.coursera.org/professional-certificates/facebook-marketing-analytics'
         }
     ];
 
@@ -200,6 +238,9 @@
                         <h3 class="text-3xl font-bold text-slate-900 mb-2">${course.title}</h3>
                         <p class="text-lg text-slate-600 mb-6">${course.courseName} par ${course.provider}</p>
                         <p class="text-slate-700 leading-relaxed mb-6">${course.justification}</p>
+                        <a href="${course.courseUrl}" target="_blank" rel="noopener noreferrer" class="cta-button inline-block bg-amber-500 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-opacity-50">
+                            Visiter le cours sur Coursera
+                        </a>
                     </div>
                     <div>
                         <div class="bg-slate-100 p-4 rounded-lg mb-4">
