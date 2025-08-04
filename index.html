@@ -58,14 +58,16 @@
 
 <main class="container mx-auto px-4 py-8 md:py-12">
 
-    <header class="text-center mb-12">
-        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Votre Parcours d'Apprentissage Marketing Final</h1>
-        <p class="text-lg text-slate-600 max-w-3xl mx-auto">Une feuille de route interactive en 4 phases, conçue pour vous guider de la stratégie à l'analyse de données avancée.</p>
+    <header class="text-center mb-12 relative">
+        <h1 id="main-title" class="text-4xl md:text-5xl font-bold text-slate-900 mb-4"></h1>
+        <p id="main-subtitle" class="text-lg text-slate-600 max-w-3xl mx-auto"></p>
+        <button id="lang-toggle" class="absolute top-0 right-0 bg-slate-200 text-slate-800 font-semibold py-2 px-4 rounded-full shadow hover:bg-slate-300 transition-colors">
+        </button>
     </header>
 
     <section id="roadmap" class="mb-16">
-        <h2 class="text-3xl font-bold text-center mb-4 text-slate-900">Le Parcours d'Apprentissage Recommandé</h2>
-        <p class="text-center text-slate-600 mb-10 max-w-3xl mx-auto">Suivez cette progression logique pour construire une expertise complète et cohérente. Cliquez sur chaque phase pour découvrir le cours recommandé et sa justification.</p>
+        <h2 id="roadmap-title" class="text-3xl font-bold text-center mb-4 text-slate-900"></h2>
+        <p id="roadmap-subtitle" class="text-center text-slate-600 mb-10 max-w-3xl mx-auto"></p>
 
         <div id="phases-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         </div>
@@ -74,9 +76,16 @@
     <section id="details-section" class="details-section bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-slate-200">
     </section>
 
+    <section id="total-duration" class="my-16">
+        <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-200 text-center">
+            <h3 id="total-duration-title" class="text-2xl font-bold text-slate-900 mb-2"></h3>
+            <p id="total-duration-text" class="text-lg text-slate-600"></p>
+        </div>
+    </section>
+
     <section id="comparison" class="my-16">
-        <h2 class="text-3xl font-bold text-center mb-4 text-slate-900">Analyse Comparative des Cours</h2>
-        <p class="text-center text-slate-600 mb-10 max-w-2xl mx-auto">Ce graphique radar visualise le focus relatif de chaque programme sur les axes stratégique, numérique et technique, ainsi que leur durée. C'est une excellente façon de voir la progression de la difficulté.</p>
+        <h2 id="comparison-title" class="text-3xl font-bold text-center mb-4 text-slate-900"></h2>
+        <p id="comparison-subtitle" class="text-center text-slate-600 mb-10 max-w-2xl mx-auto"></p>
         <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-200">
             <div class="chart-container">
                 <canvas id="comparisonChart"></canvas>
@@ -85,130 +94,306 @@
     </section>
 
     <section id="cumulative-skills" class="my-16">
-        <h2 class="text-3xl font-bold text-center mb-4 text-slate-900">Compétences Cumulatives Acquises</h2>
-        <p class="text-center text-slate-600 mb-10 max-w-2xl mx-auto">Une fois le parcours terminé, vous aurez développé un profil de marketeur complet, alliant stratégie, exécution et analyse.</p>
+        <h2 id="skills-title" class="text-3xl font-bold text-center mb-4 text-slate-900"></h2>
+        <p id="skills-subtitle" class="text-center text-slate-600 mb-10 max-w-2xl mx-auto"></p>
         <div id="skills-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
-                <h3 class="font-bold text-lg mb-2 text-slate-900">Acuité Stratégique</h3>
-                <p class="text-slate-600">Compréhension des concepts fondamentaux, du comportement des consommateurs et de la planification stratégique.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
-                <h3 class="font-bold text-lg mb-2 text-slate-900">Maîtrise du Marketing Numérique</h3>
-                <p class="text-slate-600">Capacité à gérer des campagnes sur les canaux numériques avec une approche moderne de growth hacking.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
-                <h3 class="font-bold text-lg mb-2 text-slate-900">Analyse de Performance</h3>
-                <p class="text-slate-600">Expertise dans la mesure des performances et la conversion des données en insights exploitables.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
-                <h3 class="font-bold text-lg mb-2 text-slate-900">Compétences Techniques Avancées</h3>
-                <p class="text-slate-600">Maîtrise des outils d'analyse de données de pointe comme SQL, Python et Tableau.</p>
-            </div>
+            <!-- Les cartes de compétences seront générées par JS -->
         </div>
     </section>
 
-    <!-- Nouvelle section pour les métiers accessibles -->
     <section id="accessible-jobs" class="my-16">
-        <h2 class="text-3xl font-bold text-center mb-4 text-slate-900">Métiers Accessibles après ce Parcours</h2>
-        <p class="text-center text-slate-600 mb-10 max-w-3xl mx-auto">Ce parcours vous prépare à des rôles clés dans le domaine du marketing numérique, du growth hacking et de l'analyse de données.</p>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
-                <h3 class="font-bold text-xl mb-2 text-slate-900">Spécialiste Marketing Numérique</h3>
-                <p class="text-slate-600">Gère et optimise les campagnes sur les plateformes numériques (réseaux sociaux, email, SEO) pour générer des leads et des ventes.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
-                <h3 class="font-bold text-xl mb-2 text-slate-900">Growth Hacker</h3>
-                <p class="text-slate-600">Conçoit et met en œuvre des expériences rapides pour identifier les canaux et les tactiques les plus efficaces pour la croissance d'une entreprise.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
-                <h3 class="font-bold text-xl mb-2 text-slate-900">Analyste Marketing</h3>
-                <p class="text-slate-600">Collecte et analyse les données de performance pour identifier des tendances, mesurer le ROI et fournir des recommandations stratégiques.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
-                <h3 class="font-bold text-xl mb-2 text-slate-900">Consultant en Marketing</h3>
-                <p class="text-slate-600">Conseille des entreprises sur leur stratégie marketing globale, de la planification à l'exécution, en s'appuyant sur une connaissance approfondie du marché.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
-                <h3 class="font-bold text-xl mb-2 text-slate-900">Responsable E-commerce</h3>
-                <p class="text-slate-600">Dirige les opérations d'une boutique en ligne, en se concentrant sur l'acquisition de clients, la rétention et l'optimisation de la conversion.</p>
-            </div>
-            <div class="bg-white p-6 rounded-xl shadow-md border border-slate-200">
-                <h3 class="font-bold text-xl mb-2 text-slate-900">Responsable SEO/SEA</h3>
-                <p class="text-slate-600">Spécialiste de l'optimisation pour les moteurs de recherche et des campagnes publicitaires payantes pour maximiser la visibilité en ligne.</p>
-            </div>
+        <h2 id="jobs-title" class="text-3xl font-bold text-center mb-4 text-slate-900"></h2>
+        <p id="jobs-subtitle" class="text-center text-slate-600 mb-10 max-w-3xl mx-auto"></p>
+        <div id="jobs-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Les cartes de métiers seront générées par JS -->
         </div>
     </section>
 
 </main>
 
 <footer class="bg-slate-800 text-slate-300 py-6 text-center">
-    <p>&copy; 2025 Parcours d'Apprentissage Marketing et Growth Hacking. Construit pour la clarté.</p>
+    <p id="footer-text"></p>
 </footer>
 
 <script>
-    const courseData = [
-        {
-            id: 'strategy',
-            phase: 1,
-            title: 'Stratégie Marketing Fondamentale',
-            courseName: 'Marketing Strategy Specialization',
-            provider: 'IE Business School',
-            duration: '2 mois (10h/sem)',
-            difficulty: 'Débutant',
-            justification: "Cette spécialisation est le point de départ idéal. Elle établit les bases conceptuelles indispensables pour comprendre le **\"pourquoi\"** derrière chaque action marketing. Avant de se lancer dans les outils numériques, il est crucial de maîtriser les principes de l'analyse de marché, du comportement des consommateurs et de l'élaboration d'un plan marketing.",
-            skills: ['Planification Marketing', 'Stratégie de Marque', 'Comportement du consommateur', 'Les 4 P'],
-            tools: ['Conceptuel'],
-            chartData: { strategy: 9, digital: 2, technical: 1, duration: 3 },
-            courseUrl: 'https://www.coursera.org/specializations/marketing-strategy'
+    // Définition de toutes les chaînes de texte et données de cours pour les deux langues
+    const translations = {
+        fr: {
+            mainTitle: "Mon parcours d'apprentissage et d'évolution dans le marketing à GLOTELHO",
+            mainSubtitle: "Une feuille de route interactive en 4 phases, conçue pour vous guider de la stratégie à l'analyse de données avancée.",
+            langButton: "English",
+            roadmapTitle: "Le Parcours d'Apprentissage Recommandé",
+            roadmapSubtitle: "Suivez cette progression logique pour construire une expertise complète et cohérente. Cliquez sur chaque phase pour découvrir le cours recommandé et sa justification.",
+            totalDurationTitle: "Durée Totale du Parcours",
+            totalDurationText: "Le parcours complet représente une durée d'environ 13 mois, en considérant un engagement constant d'environ 10 heures par semaine.",
+            courseButton: "Visiter le cours sur Coursera",
+            detailsInfos: "Infos Clés",
+            detailsDuration: "Durée :",
+            detailsDifficulty: "Difficulté :",
+            detailsSkillsTools: "Compétences & Outils",
+            detailsSkills: "Compétences",
+            detailsTools: "Outils",
+            comparisonTitle: "Analyse Comparative des Cours",
+            comparisonSubtitle: "Ce graphique radar visualise le focus relatif de chaque programme sur les axes stratégique, numérique et technique, ainsi que leur durée. C'est une excellente façon de voir la progression de la difficulté.",
+            chartLabels: ['Stratégie Conceptuelle', 'Exécution Numérique', 'Compétences Techniques', 'Durée (Mois)'],
+            skillsTitle: "Compétences Cumulatives Acquises",
+            skillsSubtitle: "Une fois le parcours terminé, vous aurez développé un profil de marketeur complet, alliant stratégie, exécution et analyse.",
+            skillsList: [
+                {
+                    title: "Acuité Stratégique",
+                    description: "Compréhension des concepts fondamentaux, du comportement des consommateurs et de la planification stratégique."
+                },
+                {
+                    title: "Maîtrise du Marketing Numérique",
+                    description: "Capacité à gérer des campagnes sur les canaux numériques avec une approche moderne de growth hacking."
+                },
+                {
+                    title: "Analyse de Performance",
+                    description: "Expertise dans la mesure des performances et la conversion des données en insights exploitables."
+                },
+                {
+                    title: "Compétences Techniques Avancées",
+                    description: "Maîtrise des outils d'analyse de données de pointe comme SQL, Python et Tableau."
+                }
+            ],
+            jobsTitle: "Métiers Accessibles après ce Parcours",
+            jobsSubtitle: "Ce parcours vous prépare à des rôles clés dans le domaine du marketing numérique, du growth hacking et de l'analyse de données.",
+            jobsList: [
+                {
+                    title: "Growth Hacker",
+                    description: "Conçoit et met en œuvre des expériences rapides pour identifier les canaux et les tactiques les plus efficaces pour la croissance d'une entreprise."
+                },
+                {
+                    title: "Analyste Marketing",
+                    description: "Collecte et analyse les données de performance pour identifier des tendances, mesurer le ROI et fournir des recommandations stratégiques."
+                },
+                {
+                    title: "Consultant en Marketing",
+                    description: "Conseille des entreprises sur leur stratégie marketing globale, de la planification à l'exécution, en s'appuyant sur une connaissance approfondie du marché."
+                }
+            ],
+            footerText: "&copy; 2025 Parcours d'Apprentissage Marketing et Growth Hacking. Construit pour la clarté.",
+            courseData: [
+                {
+                    id: 'strategy',
+                    phase: 1,
+                    title: 'Stratégie Marketing Fondamentale',
+                    courseName: 'Marketing Strategy Specialization',
+                    provider: 'IE Business School',
+                    duration: '2 mois (10h/sem)',
+                    difficulty: 'Débutant',
+                    justification: "Cette spécialisation est le point de départ idéal. Elle établit les bases conceptuelles indispensables pour comprendre le \"pourquoi\" derrière chaque action marketing. Avant de se lancer dans les outils numériques, il est crucial de maîtriser les principes de l'analyse de marché, du comportement des consommateurs et de l'élaboration d'un plan marketing.",
+                    skills: ['Planification Marketing', 'Stratégie de Marque', 'Comportement du consommateur', 'Les 4 P'],
+                    tools: ['Conceptuel'],
+                    chartData: { strategy: 9, digital: 2, technical: 1, duration: 3 },
+                    courseUrl: 'https://www.coursera.org/specializations/marketing-strategy'
+                },
+                {
+                    id: 'ibm',
+                    phase: 2,
+                    title: 'Exécution Numérique et Growth Hacking',
+                    courseName: 'IBM Digital Marketing and Growth Hacking',
+                    provider: 'IBM',
+                    duration: '2 mois (5-8h/sem)',
+                    difficulty: 'Débutant',
+                    justification: "Le certificat IBM s'intègre parfaitement en deuxième position, faisant le pont entre la théorie et la pratique. Il couvre un large éventail de canaux numériques avec un accent moderne sur le growth hacking et l'IA générative. Ce cours vous apprend à \"faire\" du marketing numérique et à adopter un état d'esprit orienté vers la croissance rapide et l'expérimentation.",
+                    skills: ['IA Générative', 'Growth Hacking', 'SEO', 'Publicité', 'Médias Sociaux', 'E-commerce'],
+                    tools: ['Outils GenAI', 'Plateformes publicitaires', 'Outils SEO'],
+                    chartData: { strategy: 5, digital: 9, technical: 2, duration: 3 },
+                    courseUrl: 'https://www.coursera.org/professional-certificates/ibm-digital-marketing-and-growth-hacking'
+                },
+                {
+                    id: 'unilever',
+                    phase: 3,
+                    title: 'Analyse de Performance et Optimisation',
+                    courseName: 'Unilever Digital Marketing Analyst',
+                    provider: 'Unilever',
+                    duration: '2 mois (10h/sem)',
+                    difficulty: 'Débutant',
+                    justification: "Après avoir appris à exécuter des campagnes dans la Phase 2, l'étape logique suivante est de comprendre comment les mesurer et les optimiser. Ce certificat met l'accent sur les compétences pratiques d'analyse de performance, en vous enseignant à utiliser des outils standards de l'industrie comme Google Analytics 4. C'est le tremplin parfait pour passer de l'exécution à l'analyse, sans l'exigence technique de la programmation.",
+                    skills: ['Analyse du Marketing Numérique', 'Google Analytics 4', 'Tests A/B', 'Narration de Données', 'ROI'],
+                    tools: ['Google Analytics 4', 'Feuilles de calcul'],
+                    chartData: { strategy: 6, digital: 7, technical: 4, duration: 3 },
+                    courseUrl: 'https://www.coursera.org/professional-certificates/unilever-digital-marketing-analyst'
+                },
+                {
+                    id: 'meta',
+                    phase: 4,
+                    title: 'Maîtrise Technique et Analyse Avancée',
+                    courseName: 'Meta Marketing Analytics',
+                    provider: 'Meta',
+                    duration: '7 mois (10h/sem)',
+                    difficulty: 'Débutant (Technique)',
+                    justification: "Cette phase est le point culminant pour ceux qui aspirent à des rôles d'analyste marketing avancés. Elle représente un saut significatif en profondeur technique, introduisant la manipulation de données avec SQL et Python, et la visualisation avec Tableau. Elle fournit la rigueur statistique nécessaire pour passer de la simple analyse de métriques à la découverte de véritables insights.",
+                    skills: ['SQL', 'Python', 'Tableau', 'Analyse Statistique', 'Modélisation'],
+                    tools: ['SQL', 'Python (Pandas)', 'Tableau', 'Meta Ads Manager'],
+                    chartData: { strategy: 3, digital: 6, technical: 9, duration: 8 },
+                    courseUrl: 'https://www.coursera.org/professional-certificates/facebook-marketing-analytics'
+                }
+            ]
         },
-        {
-            id: 'ibm',
-            phase: 2,
-            title: 'Exécution Numérique et Growth Hacking',
-            courseName: 'IBM Digital Marketing and Growth Hacking',
-            provider: 'IBM',
-            duration: '2 mois (5-8h/sem)',
-            difficulty: 'Débutant',
-            justification: "Le certificat IBM s'intègre parfaitement en deuxième position, faisant le pont entre la théorie et la pratique. Il couvre un large éventail de canaux numériques avec un accent moderne sur le **growth hacking** et l'**IA générative**. Ce cours vous apprend à **\"faire\"** du marketing numérique et à adopter un état d'esprit orienté vers la croissance rapide et l'expérimentation.",
-            skills: ['IA Générative', 'Growth Hacking', 'SEO', 'Publicité', 'Médias Sociaux', 'E-commerce'],
-            tools: ['Outils GenAI', 'Plateformes publicitaires', 'Outils SEO'],
-            chartData: { strategy: 5, digital: 9, technical: 2, duration: 3 },
-            courseUrl: 'https://www.coursera.org/professional-certificates/ibm-digital-marketing-and-growth-hacking'
-        },
-        {
-            id: 'unilever',
-            phase: 3,
-            title: 'Analyse de Performance et Optimisation',
-            courseName: 'Unilever Digital Marketing Analyst',
-            provider: 'Unilever',
-            duration: '2 mois (10h/sem)',
-            difficulty: 'Débutant',
-            justification: "Après avoir appris à exécuter des campagnes dans la Phase 2, l'étape logique suivante est de comprendre comment les mesurer et les optimiser. Ce certificat met l'accent sur les compétences pratiques d'analyse de performance, en vous enseignant à utiliser des outils standards de l'industrie comme **Google Analytics 4**. C'est le tremplin parfait pour passer de l'exécution à l'analyse, sans l'exigence technique de la programmation.",
-            skills: ['Analyse du Marketing Numérique', 'Google Analytics 4', 'Tests A/B', 'Narration de Données', 'ROI'],
-            tools: ['Google Analytics 4', 'Feuilles de calcul'],
-            chartData: { strategy: 6, digital: 7, technical: 4, duration: 3 },
-            courseUrl: 'https://www.coursera.org/professional-certificates/unilever-digital-marketing-analyst'
-        },
-        {
-            id: 'meta',
-            phase: 4,
-            title: 'Maîtrise Technique et Analyse Avancée',
-            courseName: 'Meta Marketing Analytics',
-            provider: 'Meta',
-            duration: '7 mois (10h/sem)',
-            difficulty: 'Débutant (Technique)',
-            justification: "Cette phase est le point culminant pour ceux qui aspirent à des rôles d'analyste marketing avancés. Elle représente un saut significatif en profondeur technique, introduisant la manipulation de données avec **SQL** et **Python**, et la visualisation avec **Tableau**. Elle fournit la rigueur statistique nécessaire pour passer de la simple analyse de métriques à la découverte de véritables insights.",
-            skills: ['SQL', 'Python', 'Tableau', 'Analyse Statistique', 'Modélisation'],
-            tools: ['SQL', 'Python (Pandas)', 'Tableau', 'Meta Ads Manager'],
-            chartData: { strategy: 3, digital: 6, technical: 9, duration: 8 },
-            courseUrl: 'https://www.coursera.org/professional-certificates/facebook-marketing-analytics'
+        en: {
+            mainTitle: "My Learning and Development Path in Marketing at GLOTELHO",
+            mainSubtitle: "An interactive, 4-phase roadmap designed to guide you from strategy to advanced data analysis.",
+            langButton: "Français",
+            roadmapTitle: "The Recommended Learning Path",
+            roadmapSubtitle: "Follow this logical progression to build comprehensive and coherent expertise. Click on each phase to discover the recommended course and its justification.",
+            totalDurationTitle: "Total Path Duration",
+            totalDurationText: "The complete path has a total duration of approximately 13 months, assuming a consistent commitment of about 10 hours per week.",
+            courseButton: "Visit Course on Coursera",
+            detailsInfos: "Key Info",
+            detailsDuration: "Duration:",
+            detailsDifficulty: "Difficulty:",
+            detailsSkillsTools: "Skills & Tools",
+            detailsSkills: "Skills",
+            detailsTools: "Tools",
+            comparisonTitle: "Comparative Course Analysis",
+            comparisonSubtitle: "This radar chart visualizes the relative focus of each program on strategic, digital, and technical axes, as well as their duration. It's a great way to see the progression in difficulty.",
+            chartLabels: ['Conceptual Strategy', 'Digital Execution', 'Technical Skills', 'Duration (Months)'],
+            skillsTitle: "Cumulative Skills Acquired",
+            skillsSubtitle: "Once the path is completed, you will have developed a complete marketer profile, combining strategy, execution, and analysis.",
+            skillsList: [
+                {
+                    title: "Strategic Acuity",
+                    description: "Understanding of fundamental concepts, consumer behavior, and strategic planning."
+                },
+                {
+                    title: "Digital Marketing Mastery",
+                    description: "Ability to manage campaigns across digital channels with a modern growth hacking approach."
+                },
+                {
+                    title: "Performance Analysis",
+                    description: "Expertise in measuring performance and converting data into actionable insights."
+                },
+                {
+                    title: "Advanced Technical Skills",
+                    description: "Proficiency in cutting-edge data analysis tools like SQL, Python, and Tableau."
+                }
+            ],
+            jobsTitle: "Accessible Careers after this Path",
+            jobsSubtitle: "This path prepares you for key roles in digital marketing, growth hacking, and data analysis.",
+            jobsList: [
+                {
+                    title: "Growth Hacker",
+                    description: "Designs and implements rapid experiments to identify the most effective channels and tactics for business growth."
+                },
+                {
+                    title: "Marketing Analyst",
+                    description: "Collects and analyzes performance data to identify trends, measure ROI, and provide strategic recommendations."
+                },
+                {
+                    title: "Marketing Consultant",
+                    description: "Advises companies on their overall marketing strategy, from planning to execution, based on a deep knowledge of the market."
+                }
+            ],
+            footerText: "&copy; 2025 Marketing Learning Path. Built for clarity.",
+            courseData: [
+                {
+                    id: 'strategy',
+                    phase: 1,
+                    title: 'Fundamental Marketing Strategy',
+                    courseName: 'Marketing Strategy Specialization',
+                    provider: 'IE Business School',
+                    duration: '2 months (10h/week)',
+                    difficulty: 'Beginner',
+                    justification: "This specialization is the ideal starting point. It establishes the essential conceptual foundations for understanding the \"why\" behind every marketing action. Before diving into digital tools, it's crucial to master the principles of market analysis, consumer behavior, and marketing plan development.",
+                    skills: ['Marketing Planning', 'Brand Strategy', 'Consumer Behavior', 'The 4 P\'s'],
+                    tools: ['Conceptual'],
+                    chartData: { strategy: 9, digital: 2, technical: 1, duration: 3 },
+                    courseUrl: 'https://www.coursera.org/specializations/marketing-strategy'
+                },
+                {
+                    id: 'ibm',
+                    phase: 2,
+                    title: 'Digital Execution and Growth Hacking',
+                    courseName: 'IBM Digital Marketing and Growth Hacking',
+                    provider: 'IBM',
+                    duration: '2 months (5-8h/week)',
+                    difficulty: 'Beginner',
+                    justification: "The IBM certificate fits perfectly in the second position, bridging the gap between theory and practice. It covers a wide range of digital channels with a modern focus on growth hacking and generative AI. This course teaches you \"how to\" do digital marketing and adopt a mindset geared towards rapid growth and experimentation.",
+                    skills: ['Generative AI', 'Growth Hacking', 'SEO', 'Advertising', 'Social Media', 'E-commerce'],
+                    tools: ['GenAI Tools', 'Advertising Platforms', 'SEO Tools'],
+                    chartData: { strategy: 5, digital: 9, technical: 2, duration: 3 },
+                    courseUrl: 'https://www.coursera.org/professional-certificates/ibm-digital-marketing-and-growth-hacking'
+                },
+                {
+                    id: 'unilever',
+                    phase: 3,
+                    title: 'Performance Analysis and Optimization',
+                    courseName: 'Unilever Digital Marketing Analyst',
+                    provider: 'Unilever',
+                    duration: '2 months (10h/week)',
+                    difficulty: 'Beginner',
+                    justification: "After learning how to execute campaigns in Phase 2, the next logical step is to understand how to measure and optimize them. This certificate focuses on practical performance analysis skills, teaching you to use industry-standard tools like Google Analytics 4. It's the perfect stepping stone from execution to analysis, without the technical requirement of programming.",
+                    skills: ['Digital Marketing Analysis', 'Google Analytics 4', 'A/B Testing', 'Data Storytelling', 'ROI'],
+                    tools: ['Google Analytics 4', 'Spreadsheets'],
+                    chartData: { strategy: 6, digital: 7, technical: 4, duration: 3 },
+                    courseUrl: 'https://www.coursera.org/professional-certificates/unilever-digital-marketing-analyst'
+                },
+                {
+                    id: 'meta',
+                    phase: 4,
+                    title: 'Technical Mastery and Advanced Analytics',
+                    courseName: 'Meta Marketing Analytics',
+                    provider: 'Meta',
+                    duration: '7 months (10h/week)',
+                    difficulty: 'Beginner (Technical)',
+                    justification: "This phase is the culmination for those aspiring to advanced marketing analyst roles. It represents a significant leap in technical depth, introducing data manipulation with SQL and Python, and visualization with Tableau. It provides the statistical rigor needed to move from simple metric analysis to discovering true insights.",
+                    skills: ['SQL', 'Python', 'Tableau', 'Statistical Analysis', 'Modeling'],
+                    tools: ['SQL', 'Python (Pandas)', 'Tableau', 'Meta Ads Manager'],
+                    chartData: { strategy: 3, digital: 6, technical: 9, duration: 8 },
+                    courseUrl: 'https://www.coursera.org/professional-certificates/facebook-marketing-analytics'
+                }
+            ]
         }
-    ];
+    };
 
-    const phasesContainer = document.getElementById('phases-container');
-    const detailsSection = document.getElementById('details-section');
+    let currentLang = 'fr';
+    let myChart;
 
-    function renderPhaseCards() {
+    // Fonction pour mettre à jour l'interface utilisateur en fonction de la langue sélectionnée
+    function updateUI(lang) {
+        const data = translations[lang];
+        const courseData = data.courseData;
+
+        // Mise à jour des textes statiques
+        document.getElementById('main-title').textContent = data.mainTitle;
+        document.getElementById('main-subtitle').textContent = data.mainSubtitle;
+        document.getElementById('lang-toggle').textContent = data.langButton;
+        document.getElementById('roadmap-title').textContent = data.roadmapTitle;
+        document.getElementById('roadmap-subtitle').textContent = data.roadmapSubtitle;
+        document.getElementById('total-duration-title').textContent = data.totalDurationTitle;
+        document.getElementById('total-duration-text').textContent = data.totalDurationText;
+        document.getElementById('comparison-title').textContent = data.comparisonTitle;
+        document.getElementById('comparison-subtitle').textContent = data.comparisonSubtitle;
+        document.getElementById('skills-title').textContent = data.skillsTitle;
+        document.getElementById('skills-subtitle').textContent = data.skillsSubtitle;
+        document.getElementById('jobs-title').textContent = data.jobsTitle;
+        document.getElementById('jobs-subtitle').textContent = data.jobsSubtitle;
+        document.getElementById('footer-text').innerHTML = data.footerText;
+
+        // Mise à jour des cartes de phase
+        renderPhaseCards(courseData);
+
+        // Mise à jour des cartes de compétences
+        renderSkillCards(data.skillsList);
+
+        // Mise à jour des cartes de métiers
+        renderJobCards(data.jobsList);
+
+        // Mise à jour du graphique
+        renderComparisonChart(courseData, data.chartLabels);
+
+        // Sélection de la première carte pour afficher les détails par défaut
+        const firstCard = document.querySelector('.phase-card');
+        if (firstCard) {
+            firstCard.classList.add('active');
+            updateDetails(firstCard.dataset.courseId, courseData);
+        }
+    }
+
+    function renderPhaseCards(courseData) {
+        const phasesContainer = document.getElementById('phases-container');
         phasesContainer.innerHTML = '';
         courseData.forEach(course => {
             const card = document.createElement('div');
@@ -227,9 +412,12 @@
         });
     }
 
-    function updateDetails(courseId) {
+    function updateDetails(courseId, courseData) {
+        const detailsSection = document.getElementById('details-section');
         const course = courseData.find(c => c.id === courseId);
         if (!course) return;
+
+        const langData = translations[currentLang];
 
         detailsSection.innerHTML = `
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -239,22 +427,22 @@
                         <p class="text-lg text-slate-600 mb-6">${course.courseName} par ${course.provider}</p>
                         <p class="text-slate-700 leading-relaxed mb-6">${course.justification}</p>
                         <a href="${course.courseUrl}" target="_blank" rel="noopener noreferrer" class="cta-button inline-block bg-amber-500 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-opacity-50">
-                            Visiter le cours sur Coursera
+                            ${langData.courseButton}
                         </a>
                     </div>
                     <div>
                         <div class="bg-slate-100 p-4 rounded-lg mb-4">
-                            <h4 class="font-bold text-slate-800 mb-2">Infos Clés</h4>
-                            <p><span class="font-semibold">Durée :</span> ${course.duration}</p>
-                            <p><span class="font-semibold">Difficulté :</span> ${course.difficulty}</p>
+                            <h4 class="font-bold text-slate-800 mb-2">${langData.detailsInfos}</h4>
+                            <p><span class="font-semibold">${langData.detailsDuration}</span> ${course.duration}</p>
+                            <p><span class="font-semibold">${langData.detailsDifficulty}</span> ${course.difficulty}</p>
                         </div>
                         <div class="bg-slate-100 p-4 rounded-lg">
-                            <h4 class="font-bold text-slate-800 mb-3">Compétences & Outils</h4>
-                            <h5 class="font-semibold text-sm mb-2 text-slate-600">Compétences</h5>
+                            <h4 class="font-bold text-slate-800 mb-3">${langData.detailsSkillsTools}</h4>
+                            <h5 class="font-semibold text-sm mb-2 text-slate-600">${langData.detailsSkills}</h5>
                             <div class="flex flex-wrap gap-2 mb-4">
                                 ${course.skills.map(skill => `<span class="bg-amber-100 text-amber-800 text-xs font-medium px-2.5 py-0.5 rounded-full">${skill}</span>`).join('')}
                             </div>
-                            <h5 class="font-semibold text-sm mb-2 text-slate-600">Outils</h5>
+                            <h5 class="font-semibold text-sm mb-2 text-slate-600">${langData.detailsTools}</h5>
                             <div class="flex flex-wrap gap-2">
                                 ${course.tools.map(tool => `<span class="bg-slate-200 text-slate-800 text-xs font-medium px-2.5 py-0.5 rounded-full">${tool}</span>`).join('')}
                             </div>
@@ -265,19 +453,42 @@
         detailsSection.classList.add('visible');
     }
 
-    phasesContainer.addEventListener('click', (e) => {
-        const card = e.target.closest('.phase-card');
-        if (card) {
-            const courseId = card.dataset.courseId;
-            document.querySelectorAll('.phase-card').forEach(c => c.classList.remove('active'));
-            card.classList.add('active');
-            updateDetails(courseId);
-        }
-    });
+    function renderSkillCards(skills) {
+        const skillsListContainer = document.getElementById('skills-list');
+        skillsListContainer.innerHTML = '';
+        skills.forEach(skill => {
+            const card = document.createElement('div');
+            card.className = 'bg-white p-6 rounded-xl shadow-md border border-slate-200';
+            card.innerHTML = `
+                    <h3 class="font-bold text-lg mb-2 text-slate-900">${skill.title}</h3>
+                    <p class="text-slate-600">${skill.description}</p>
+                `;
+            skillsListContainer.appendChild(card);
+        });
+    }
 
-    function renderComparisonChart() {
+    function renderJobCards(jobs) {
+        const jobsListContainer = document.getElementById('jobs-list');
+        jobsListContainer.innerHTML = '';
+        jobs.forEach(job => {
+            const card = document.createElement('div');
+            card.className = 'bg-white p-6 rounded-xl shadow-md border border-slate-200';
+            card.innerHTML = `
+                    <h3 class="font-bold text-xl mb-2 text-slate-900">${job.title}</h3>
+                    <p class="text-slate-600">${job.description}</p>
+                `;
+            jobsListContainer.appendChild(card);
+        });
+    }
+
+    function renderComparisonChart(courseData, chartLabels) {
         const ctx = document.getElementById('comparisonChart').getContext('2d');
-        const labels = ['Stratégie Conceptuelle', 'Exécution Numérique', 'Compétences Techniques', 'Durée (Mois)'];
+
+        // Détruire l'ancien graphique s'il existe
+        if (myChart) {
+            myChart.destroy();
+        }
+
         const datasets = courseData.map((course, index) => {
             const colors = [
                 { bg: 'rgba(245, 158, 11, 0.2)', border: 'rgb(245, 158, 11)' }, // amber-500
@@ -298,10 +509,10 @@
             };
         });
 
-        new Chart(ctx, {
+        myChart = new Chart(ctx, {
             type: 'radar',
             data: {
-                labels: labels,
+                labels: chartLabels,
                 datasets: datasets
             },
             options: {
@@ -359,14 +570,27 @@
         });
     }
 
-    window.onload = function() {
-        renderPhaseCards();
-        renderComparisonChart();
-        const firstCard = document.querySelector('.phase-card');
-        if(firstCard) {
-            firstCard.classList.add('active');
-            updateDetails(firstCard.dataset.courseId);
+    // Écouteur d'événement pour le clic sur les cartes de phase
+    document.getElementById('phases-container').addEventListener('click', (e) => {
+        const card = e.target.closest('.phase-card');
+        if (card) {
+            const courseId = card.dataset.courseId;
+            document.querySelectorAll('.phase-card').forEach(c => c.classList.remove('active'));
+            card.classList.add('active');
+            updateDetails(courseId, translations[currentLang].courseData);
         }
+    });
+
+    // Écouteur d'événement pour le bouton de changement de langue
+    document.getElementById('lang-toggle').addEventListener('click', () => {
+        currentLang = (currentLang === 'fr') ? 'en' : 'fr';
+        document.documentElement.lang = currentLang;
+        updateUI(currentLang);
+    });
+
+    // Initialisation de l'application au chargement de la fenêtre
+    window.onload = function() {
+        updateUI(currentLang);
     };
 </script>
 </body>
